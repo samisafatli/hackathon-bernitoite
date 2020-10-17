@@ -3,6 +3,7 @@ import LoginForm from './components/LoginForm';
 import Home from './components/Home';
 import NewDelivery from './components/NewDelivery';
 import Loading from './components/Loading'
+import Chat from './components/Chat'
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/loading" exact>
             <Loading/>
+          </Route>
+          <Route path="/chat" exact>
+            <Chat/>
           </Route>
         </Switch>
       </Router>

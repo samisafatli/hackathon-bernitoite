@@ -1,11 +1,17 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import {
+    Link
+} from "react-router-dom";
+
 const Loading = () => (
-    
+
     <div>
-        <div>46070D4BF934FB0D4B06D9E2C46E346944E322444900A435D7D9A95E6D7435F5</div>
-        <CircularProgress/>
+        <Link to="/chat">
+            <div>46070D4BF934FB0D4B0</div>
+        </Link>
+        <CircularProgress />
     </div>
 )
 export default Loading
