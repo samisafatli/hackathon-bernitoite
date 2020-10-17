@@ -1,6 +1,10 @@
 import React from 'react';
 import { TextField, Button } from '@material-ui/core'
 
+import {
+    Link
+} from "react-router-dom";
+
 
 const NewDelivery = () => (
     <div>
@@ -13,9 +17,12 @@ const NewDelivery = () => (
         <div>
             <TextField label="Categoria do produto" variant="outlined" />
         </div>
-        <Button fullWidth variant="contained" color="primary">
-            Buscar entregador
+        <Link to="/loading">
+
+            <Button fullWidth variant="contained" color="primary">
+                Buscar entregador
         </Button>
+        </Link>
     </div>
 )
 
