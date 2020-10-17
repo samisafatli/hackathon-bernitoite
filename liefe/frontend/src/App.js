@@ -1,10 +1,10 @@
 import React from 'react';
 import LoginForm from './components/LoginForm';
+import Home from './components/Home';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  // Link
 } from "react-router-dom";
 
 import './App.css';
@@ -17,11 +17,11 @@ function App() {
           <Route path="/login">
             <LoginForm />
           </Route>
-          <Route path="/teste">
-            <div>teste</div>
+          <Route path="/home">
+            <Home/>
           </Route>
           <Route path="/">
-            <div>Home</div>
+            <Home/>
           </Route>
         </Switch>
       </Router>
