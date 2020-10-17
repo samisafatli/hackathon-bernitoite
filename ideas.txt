@@ -1,0 +1,42 @@
+Tempestade de ideias:
+
+- Usar lojas já existentes para realizar as entregas
+    A ideia é a loja se cadastrar na olx e possibilitar que pessoas que 
+    marcaram uma venda consigam deixar seus produtos na loja para quem comprou consiga realizar a retirada
+    
+    pros:
+        - Mais segurança na hora do resgate do produtos
+        - Facilidade de horário na busca
+        - Logistica mais fácil para o comprados
+    cons:
+        - Só funciona em comprar localizadas em curto diametro
+        - Produtos grandes
+        - devolução
+
+
+- Profissionais de outros aplicativos se cadastram em uma plataforma
+    para buscar entregas (tipo uber). Realizar as entregas entre suas corridas
+
+    pros:
+        - Mais segurança na hora do resgate do produtos 
+        - Não precisa se locomover para pegar o produtos (de fato um delivery)
+
+    cons:
+        - Produtos grandes
+        - Só funciona em comprar localizadas em curto diametro
+        - devolução
+
+
+- Utilizar viagens já programadas de pessoas cadastradas, podendo ser caminhoneiros, ubers, ou outras pessoas que não trabalham com isso
+    mas estão apenas indo em direção ao lugar de entrega.
+    Algo como uma busca de um uber porém interestadual.
+
+    pros: 
+        - Suporta grandes distancias
+        - Tracking da entregar
+        - Constante contato com o entregador
+
+    cons:
+        - *Produtos grandes*
+        - Devolução
+        - Segurança(talvez)
