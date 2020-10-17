@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginForm from './components/LoginForm';
 import Home from './components/Home';
+import NewDelivery from './components/NewDelivery';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,8 +21,8 @@ function App() {
           <Route path="/home">
             <Home/>
           </Route>
-          <Route path="/">
-            <Home/>
+          <Route path="/newDelivery">
+            <NewDelivery/>
           </Route>
         </Switch>
       </Router>
