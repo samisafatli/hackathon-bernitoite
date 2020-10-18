@@ -5,14 +5,14 @@ const users = [
         password: "vendedor1",
     },
     {
-        email: "vendedor1@fakemail.com",
-        username: "vendedor1",
-        password: "vendedor1",
+        email: "comprador@fakemail.com",
+        username: "comprador",
+        password: "comprador",
     },
     {
-        email: "vendedor1@fakemail.com",
-        username: "vendedor1",
-        password: "vendedor1",
+        email: "entregador@fakemail.com",
+        username: "entregador",
+        password: "entregador",
     }
 ]
 
