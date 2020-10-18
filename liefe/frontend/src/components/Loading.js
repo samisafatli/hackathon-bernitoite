@@ -1,17 +1,28 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Card, CardContent } from '@material-ui/core';
 
-import {
-    Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
+import Header from './Header'
 
 const Loading = () => (
 
-    <div>
+    <div style={{ marginBottom: 100 }}>
+        <Header />
         <Link to="/chat">
-            <div>46070D4BF934FB0D4B0</div>
+            <div style={{marginBottom: 80, width: "100%"}}>
+                <Card>
+                    <CardContent>
+                        <div>Código para acompanhar entrega</div>
+                        <h3 style={{ color: "#5C307F" }}>46070D4BF9</h3>
+                    </CardContent>
+
+                </Card>
+            </div>
         </Link>
-        <CircularProgress />
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <CircularProgress />
+        </div>
     </div>
 )
 export default Loading
