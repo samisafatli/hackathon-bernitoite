@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from '../images/Logo.png'
-import { TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import CustomButton from './Button'
+import TextInput from './TextInput'
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -23,12 +23,8 @@ const LoginForm = () => {
                 Acesse sua conta
             </h3>
         </header>
-        <div style={{ margin: 10 }}>
-            <TextField label="Email" variant="outlined" />
-        </div>
-        <div style={{ margin: 10 }}>
-            <TextField label="Senha" variant="outlined" />
-        </div>
+        <TextInput text="Email" />
+        <TextInput text="Senha" />
         <CustomButton text="Entre" className={classes.button} link="/home" />
         <CustomButton text="Cadastro" className={classes.button} />
     </div>
