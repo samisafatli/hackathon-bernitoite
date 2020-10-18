@@ -1,8 +1,8 @@
 const users = [
     {
-        email: "vendedor1@fakemail.com",
-        username: "vendedor1",
-        password: "vendedor1",
+        email: "vendedor@fakemail.com",
+        username: "vendedor",
+        password: "vendedor",
     },
     {
         email: "comprador@fakemail.com",
