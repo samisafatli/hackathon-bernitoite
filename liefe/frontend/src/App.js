@@ -36,9 +36,7 @@ function App() {
           <Route path="/buyerLoading" exact>
             <Loading />
           </Route>
-          <Route path="/chat" exact>
-            <Chat/>
-          </Route>
+          <Route path="/chat/:id" exact component={Chat}/>
         </Switch>
       </Router>
 
