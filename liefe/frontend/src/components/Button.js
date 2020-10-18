@@ -11,19 +11,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CustomButton = ({ text, className, link }) => {
+const CustomButton = ({ text, link, onClick }) => {
     const classes = useStyles();
 
     return (
         <div style={{ margin: 10 }}>
             {link ?
                 <Link to={link}>
-                    <Button className={classes.button} fullWidth variant="contained" color="primary">
+                    <Button onClick={onClick} className={classes.button} fullWidth variant="contained" color="primary">
                         {text}
                     </Button>
                 </Link>
                 :
-                <Button className={classes.button} fullWidth variant="contained" color="primary">
+                <Button onClick={onClick} className={classes.button} fullWidth variant="contained" color="primary">
                     {text}
                 </Button>
             }

@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-
+import TextInput from './TextInput'
+import CustomButton from './Button'
 import useChat from "./useChat";
+import Header from './Header'
 
+const styles = {
+    myMessage:{
+        textAlign: "end",
+        marginRight: "20px",
+    }
+}
 const Chat = (props) => {
     const { id } = props.match.params;
     const { messages, sendMessage } = useChat(id);
@@ -17,30 +25,32 @@ const Chat = (props) => {
     };
 
     return (
-        <div className="chat-room-container">
-            <h1 className="room-name">Room: {id}</h1>
-            <div className="messages-container">
-                <ol className="messages-list">
+        <div style={{width: "100%"}}>
+            <Header />            
+            <div>
+                <ul style={{listStyleType: 'none'}}>
                     {messages.map((message, i) => (
                         <li
                             key={i}
-                            className={`message-item ${message.ownedByCurrentUser ? "my-message" : "received-message"
+                            style={message.ownedByCurrentUser? {...styles.myMessage} : {}}
+                            className={` ${message.ownedByCurrentUser ? "my-message" : "received-message"
                                 }`}
                         >
                             {message.body}
                         </li>
                     ))}
-                </ol>
+                </ul>
             </div>
-            <textarea
+            <TextInput
                 value={newMessage}
-                onChange={handleNewMessageChange}
-                placeholder="Write message..."
-                className="new-message-input-field"
+                placeholder="Comece a conversar..."
+                textFieldProps={{
+                    multiline: true,
+                    fullWidth: true,
+                    onChange: handleNewMessageChange
+                }}
             />
-            <button onClick={handleSendMessage} className="send-message-button">
-                Send
-      </button>
+            <CustomButton text="Enviar" onClick={handleSendMessage} />
         </div>
     );
 };
