@@ -9,7 +9,7 @@ const NewDelivery = () => (
         <TextInput text="Endereço de origem" />
         <TextInput text="Endereço de destino" />
         <TextInput text="Categoria do produto" />
-        <CustomButton link="/loading" text="Buscar entregador" />
+        <CustomButton link="/sellerLoading" text="Buscar entregador" />
     </div>
 )
 

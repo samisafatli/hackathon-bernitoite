@@ -7,8 +7,8 @@ const Home = () => {
     return (
         <div>
             <Header/>
-            <CustomButton link="newDelivery" text="Nova Entrega" />
-            <CustomButton text="Acompanhar entrega" />
+            <CustomButton link="/newDelivery" text="Nova Entrega" />
+            <CustomButton link="/trackDelivery" text="Acompanhar entrega" />
             <CustomButton text="Entregar" />
         </div>
     )

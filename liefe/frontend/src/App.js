@@ -2,6 +2,7 @@ import React from 'react';
 import LoginForm from './components/LoginForm';
 import Home from './components/Home';
 import NewDelivery from './components/NewDelivery';
+import TrackDelivery from './components/TrackDelivery';
 import Loading from './components/Loading'
 import Chat from './components/Chat'
 import {
@@ -26,8 +27,14 @@ function App() {
           <Route path="/newDelivery" exact>
             <NewDelivery/>
           </Route>
-          <Route path="/loading" exact>
-            <Loading/>
+          <Route path="/trackDelivery" exact>
+            <TrackDelivery/>
+          </Route>
+          <Route path="/sellerLoading" exact>
+            <Loading seller/>
+          </Route>
+          <Route path="/buyerLoading" exact>
+            <Loading />
           </Route>
           <Route path="/chat" exact>
             <Chat/>
