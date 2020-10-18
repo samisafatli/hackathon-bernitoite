@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from '../images/Logo.png'
-import { TextField, Button } from '@material-ui/core'
+import { TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { Link } from "react-router-dom";
 
+import CustomButton from './Button'
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -18,7 +18,7 @@ const LoginForm = () => {
     return (
     <div style={{marginBottom: 40}}>
         <header style={{marginBottom: 40}}>
-            <img src={logo}  style={{width: 150}}/>
+            <img src={logo}  style={{width: 150}} alt="Logo"/>
             <h3 style={{ margin: 10, color: "#5C307F" }}>
                 Acesse sua conta
             </h3>
@@ -29,18 +29,8 @@ const LoginForm = () => {
         <div style={{ margin: 10 }}>
             <TextField label="Senha" variant="outlined" />
         </div>
-        <div style={{ margin: 10 }}>
-            <Link to="/home">
-                <Button className={classes.button} fullWidth variant="contained" color="primary">
-                    Entre
-            </Button>
-            </Link>
-        </div>
-        <div style={{ margin: 10 }}>
-            <Button className={classes.button} fullWidth variant="contained" color="primary">
-                Cadastrar
-             </Button>
-        </div>
+        <CustomButton text="Entre" className={classes.button} link="/home" />
+        <CustomButton text="Cadastro" className={classes.button} />
     </div>
     )
 }
