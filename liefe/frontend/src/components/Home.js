@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomButton from './Button'
 import { makeStyles } from '@material-ui/core/styles'
-import Logo from '../images/LogoOrange.png'
+import Header from './Header'
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -18,9 +18,7 @@ const Home = () => {
 
     return (
         <div>
-            <header style={{ height: 80, width: "100%", backgroundColor: "#FF6e00", position: "fixed", top: 0, left: 0 }}>
-                <img src={Logo} style={{ width: 100, marginTop: 25 }} alt="Logo" />
-            </header>
+            <Header/>
             <CustomButton className={classes.button} link="newDelivery" text="Nova Entrega" />
             <CustomButton className={classes.button} text="Acompanhar entrega" />
             <CustomButton className={classes.button} text="Entregar" />
