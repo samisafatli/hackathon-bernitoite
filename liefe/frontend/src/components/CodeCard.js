@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import { Card, CardContent } from '@material-ui/core';
-import { v4 as uuidv4 } from 'uuid';
 
 const CodeCard = () => {
     const [chatId, setChatId] = useState("")
 
     useEffect(() => {
-        setChatId(uuidv4().substring(10))
+        setChatId("09584b5cdd90c367af5")
     },[])
 return(
     <Link to={`/chat/${chatId}`}>

@@ -9,7 +9,7 @@ const Home = () => {
             <Header/>
             <CustomButton link="/newDelivery" text="Nova Entrega" />
             <CustomButton link="/trackDelivery" text="Acompanhar entrega" />
-            <CustomButton text="Entregar" />
+            <CustomButton link="/deliveryList" text="Entregar" />
         </div>
     )
 }

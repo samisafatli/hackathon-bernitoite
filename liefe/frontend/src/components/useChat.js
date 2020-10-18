@@ -27,8 +27,9 @@ const useChat = (roomId) => {
   }, [roomId]);
 
   const sendMessage = (messageBody) => {
+      const username = window.localStorage.getItem("username")
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
-      body: messageBody,
+      body: `(${username}) - ${messageBody}`,
       senderId: socketRef.current.id,
     });
   };

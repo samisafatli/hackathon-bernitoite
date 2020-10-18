@@ -3,6 +3,7 @@ import LoginForm from './components/LoginForm';
 import Home from './components/Home';
 import NewDelivery from './components/NewDelivery';
 import TrackDelivery from './components/TrackDelivery';
+import DeliveryList from './components/DeliveryList'
 import Loading from './components/Loading'
 import Chat from './components/Chat'
 import {
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/trackDelivery" exact>
             <TrackDelivery/>
+          </Route>
+          <Route path="/deliveryList" exact>
+            <DeliveryList/>
           </Route>
           <Route path="/sellerLoading" exact>
             <Loading seller/>

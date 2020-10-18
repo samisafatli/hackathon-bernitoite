@@ -37,7 +37,7 @@ const Chat = (props) => {
                             className={` ${message.ownedByCurrentUser ? "my-message" : "received-message"
                                 }`}
                         >
-                            {`(${username}) - ${message.body}`}
+                            {message.body}
                         </li>
                     ))}
                 </ul>
