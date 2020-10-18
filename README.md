@@ -1,6 +1,6 @@
 # LIEFE
 
-Projeto desenvolvido durante a hackaton da OLX cujo tema foi: **Economia colaborativa**. LIEFE é uma proposta de aplicação que irá facilitar o serviço de entrega aproveitando os percussos feitos pelos usuário.
+Projeto desenvolvido durante a hackaton da OLX cujo tema foi: **Economia colaborativa**. LIEFE é uma proposta de aplicação que irá facilitar o serviço de entrega aproveitando os percursos feitos pelos usuário.
 
 O foco do **LIEFE** é intermediar a negociação entre comprador, vendedor e entregador através de uma plataforma que permite a comunicação entre eles.
 
