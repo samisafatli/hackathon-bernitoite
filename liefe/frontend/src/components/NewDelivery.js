@@ -1,28 +1,15 @@
 import React from 'react';
-import { TextField, Button } from '@material-ui/core'
-
-import {
-    Link
-} from "react-router-dom";
-
+import TextInput from './TextInput'
+import CustomButton from './Button'
+import Header from './Header'
 
 const NewDelivery = () => (
     <div>
-        <div>
-            <TextField label="Endereço de origem" variant="outlined" />
-        </div>
-        <div>
-            <TextField label="Endereço de destino" variant="outlined" />
-        </div>
-        <div>
-            <TextField label="Categoria do produto" variant="outlined" />
-        </div>
-        <Link to="/loading">
-
-            <Button fullWidth variant="contained" color="primary">
-                Buscar entregador
-        </Button>
-        </Link>
+        <Header/>
+        <TextInput text="Endereço de origem" />
+        <TextInput text="Endereço de destino" />
+        <TextInput text="Categoria do produto" />
+        <CustomButton link="/loading" text="Buscar entregador" />
     </div>
 )
 
