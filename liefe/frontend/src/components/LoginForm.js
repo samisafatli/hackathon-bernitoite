@@ -7,18 +7,18 @@ import TextInput from './TextInput'
 const LoginForm = () => {
 
     return (
-    <div style={{marginBottom: 40}}>
-        <header style={{marginBottom: 40}}>
-            <img src={logo}  style={{width: 150}} alt="Logo"/>
-            <h3 style={{ margin: 10, color: "#5C307F" }}>
-                Acesse sua conta
+        <div style={{ marginBottom: 40 }}>
+            <header style={{ marginBottom: 40 }}>
+                <img src={logo} style={{ width: 150 }} alt="Logo" />
+                <h3 style={{ margin: 10, color: "#5C307F" }}>
+                    Acesse sua conta
             </h3>
-        </header>
-        <TextInput text="Email" />
-        <TextInput text="Senha" />
-        <CustomButton text="Entre" link="/home" />
-        <CustomButton text="Cadastro" />
-    </div>
+            </header>
+            <TextInput text="Email" />
+            <TextInput text="Senha" textFieldProps={{ type: "password" }} />
+            <CustomButton text="Entre" link="/home" />
+            <CustomButton text="Cadastro" />
+        </div>
     )
 }
 
