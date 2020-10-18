@@ -14,6 +14,7 @@ const Chat = (props) => {
     const { id } = props.match.params;
     const { messages, sendMessage } = useChat(id);
     const [newMessage, setNewMessage] = useState("");
+    const username = window.localStorage.getItem("username")
 
     const handleNewMessageChange = (event) => {
         setNewMessage(event.target.value);
@@ -36,7 +37,7 @@ const Chat = (props) => {
                             className={` ${message.ownedByCurrentUser ? "my-message" : "received-message"
                                 }`}
                         >
-                            {message.body}
+                            {`(${username}) - ${message.body}`}
                         </li>
                     ))}
                 </ul>
