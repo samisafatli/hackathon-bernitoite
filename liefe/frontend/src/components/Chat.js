@@ -10,6 +10,7 @@ const styles = {
         marginRight: "20px",
     }
 }
+
 const Chat = (props) => {
     const { id } = props.match.params;
     const { messages, sendMessage } = useChat(id);
@@ -21,8 +22,10 @@ const Chat = (props) => {
     };
 
     const handleSendMessage = () => {
-        sendMessage(newMessage);
-        setNewMessage("");
+        if(newMessage){
+            sendMessage(newMessage);
+            setNewMessage("");
+        }
     };
 
     return (
