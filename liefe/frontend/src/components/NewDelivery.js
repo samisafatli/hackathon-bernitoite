@@ -1,5 +1,5 @@
 import React from 'react';
-import TextInput from './TextInput'
+import GoogleMaps from './GoogleMaps'
 import CustomButton from './Button'
 import Header from './Header'
 import DataList from './DataList'
@@ -21,8 +21,8 @@ const categoryList = [
 const NewDelivery = () => (
     <div>
         <Header/>
-        <TextInput text="Endereço de origem" />
-        <TextInput text="Endereço de destino" />
+        <GoogleMaps label="Endereço de origem" />
+        <GoogleMaps label="Endereço de destino" />
         <DataList data={categoryList}/>
         <CustomButton link="/sellerLoading" text="Buscar entregador" />
     </div>
