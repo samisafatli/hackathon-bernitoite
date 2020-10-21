@@ -1,34 +1,39 @@
 import React, { useState, useMemo, useCallback } from "react";
 import DataListInput from "react-datalist-input";
+import { makeStyles } from '@material-ui/core/styles'
 
-const DataList = ({ myValues }) => {
+const useStyles = makeStyles((theme) => ({
+  dataList: {
+      width: '220px',
+      marginLeft:'10px',
+      marginBottom: '60px',
+      marginTop: '10px',
+  },
+}));
+
+const DataList = ({ data }) => {
     const [item, setItem] = useState();
+    const classes = useStyles();
 
-    console.log(myValues)
-    const onSelect = useCallback((selectedItem) => {
-      console.log("selectedItem", selectedItem);
-    }, []);
+    const onSelect = useCallback((selectedItem) => {}, []);
     
     const items = useMemo( () =>
-        myValues.map((oneItem) => ({
-          // required: what to show to the user
+        data.map((oneItem) => ({
           label: oneItem.name,
-          // required: key to identify the item within the array
           key: oneItem.id,
-          // feel free to add your own app logic to access those properties in the onSelect function
-          someAdditionalValue: oneItem.someAdditionalValue,
-          // or just keep everything
-          ...oneItem,
         })),
-      [myValues]
+      [data]
     );
    
     return (
-      <DataListInput
-        placeholder="Select an option from the drop down menu..."
-        items={items}
-        onSelect={onSelect}
-      />
+      <div className={classes.dataList}>
+        <DataListInput 
+          items={items}
+          onSelect={onSelect}
+          placeholder="Categoria do produto"
+          clearInputOnSelect={true}
+        />
+       </div>
     );
   };
 
