@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginForm from './components/LoginForm';
 import Home from './components/Home';
+import Register from './components/Register';
 import NewDelivery from './components/NewDelivery';
 import TrackDelivery from './components/TrackDelivery';
 import DeliveryList from './components/DeliveryList'
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/home" exact>
             <Home/>
+          </Route>
+          <Route path="/register" exact>
+            <Register/>
           </Route>
           <Route path="/newDelivery" exact>
             <NewDelivery/>
