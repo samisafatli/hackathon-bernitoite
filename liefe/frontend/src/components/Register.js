@@ -35,7 +35,7 @@ const RegisterForm = () => {
         const userData = {
             "username": username,
             "email": email,
-            "passasword": password
+            "password": password
         }
 
         console.log(userData);
