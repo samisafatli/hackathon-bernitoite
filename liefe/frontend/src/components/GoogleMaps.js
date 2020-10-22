@@ -97,7 +97,7 @@ export default function GoogleMaps (props) {
   return (
     <Autocomplete
       id='google-map-liefe'
-      style={{ width: 300 }}
+      style={{ width: "100%" }}
       getOptionLabel={option =>
         typeof option === 'string' ? option : option.description
       }
