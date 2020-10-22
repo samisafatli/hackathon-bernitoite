@@ -12,6 +12,14 @@ const client = new MongoClient(uri, {
 app.use(express.json())
 app.use(cors())
 
+const collectionExists = async (collectionName, db) => {
+  const collectionExists = await db.listCollections({
+    name: collectionName
+  }).toArray();
+
+  return collectionExists.length > 0;
+}
+
 client.connect(err => {
   const db = client.db("liefe");
   const APP_PORT = 5001;
@@ -25,9 +33,14 @@ client.connect(err => {
   })
 
   app.get('/:collectionName', async (req, res) => {
-    const collection = db.collection(req.params.collectionName);
-
     try {
+      const collectionName = req.params.collectionName;
+      const hasCollection = await collectionExists(collectionName, db)
+      if (!hasCollection) {
+        return res.send("Collection does not exist");
+      }
+
+      const collection = db.collection(collectionName);
       const items = await collection.find().toArray();
       return res.send(items);
     } catch (err) {
@@ -36,10 +49,17 @@ client.connect(err => {
   })
 
   app.post('/:collectionName', async (req, res) => {
-    const collection = db.collection(req.params.collectionName);
-    const body = req.body;
-
     try {
+      const collectionName = req.params.collectionName;
+
+      const hasCollection = await collectionExists(collectionName, db)
+      if (!hasCollection) {
+        return res.status(404).send("Collection does not exist");
+      }
+
+      const collection = db.collection(collectionName);
+      const body = req.body;
+
       const item = await collection.findOne({
         email: body.email
       })
