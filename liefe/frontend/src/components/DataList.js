@@ -1,40 +1,66 @@
-import React, { useState, useMemo, useCallback } from "react";
-import DataListInput from "react-datalist-input";
-import { makeStyles } from '@material-ui/core/styles'
+import React, { useState } from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import InputLabel from "@material-ui/core/InputLabel"
+import FormControl from "@material-ui/core/FormControl"
+import Select from "@material-ui/core/Select"
 
 const useStyles = makeStyles((theme) => ({
-  dataList: {
-      width: '220px',
-      marginLeft:'10px',
-      marginBottom: '60px',
-      marginTop: '10px',
+  formControl: {
+    margin: theme.spacing(1),
   },
+  margin:{
+    marginLeft: theme.spacing(2)
+  }
 }));
 
-const DataList = ({ data }) => {
-    const [item, setItem] = useState();
-    const classes = useStyles();
+const categories = [
+  { name: "" },
+  { name: "Autos e peças" },
+  { name: "Para a sua casa" },
+  { name: "Eletrônicos e celulares" },
+  { name: "Música e Hobbies" },
+  { name: "Esportes e lazer" },
+  { name: "Artigos infantis" },
+  { name: "animais de estimação" },
+  { name: "moda e beleza" },
+  { name: "comércio e escritório" }
+]
 
-    const onSelect = useCallback((selectedItem) => {}, []);
-    
-    const items = useMemo( () =>
-        data.map((oneItem) => ({
-          label: oneItem.name,
-          key: oneItem.id,
-        })),
-      [data]
-    );
-   
-    return (
-      <div className={classes.dataList}>
-        <DataListInput 
-          items={items}
-          onSelect={onSelect}
-          placeholder="Categoria do produto"
-          clearInputOnSelect={true}
-        />
-       </div>
-    );
-  };
+export default function NativeSelects() {
+  const classes = useStyles();
+  const [state, setState] = useState({
+    category: "",
+  })
 
-export default DataList
+  const handleChange = (event) => {
+    const name = event.target.name
+    setState({
+      ...state,
+      [name]: event.target.value
+    })
+  }
+
+  return (
+    <div>
+      <FormControl className={classes.formControl}>
+        <InputLabel className={classes.margin } htmlFor="category-native-simple">Categoria do produto</InputLabel>
+        <Select
+          autoWidth
+          native
+          value={state.category}
+          onChange={handleChange}
+          inputProps={{
+            name: 'category',
+            id: 'category-native-simple',
+          }}
+          variant="outlined"
+        >
+          {categories.map(category => (
+            <option value={category.name}>{category.name}</option>
+          ))
+          }
+        </Select>
+      </FormControl>
+    </div>
+  )
+}
