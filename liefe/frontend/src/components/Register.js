@@ -23,7 +23,7 @@ const RegisterForm = () => {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         
-        fetch('http://localhost:5001/user', {
+        fetch('http://localhost:5001/users', {
             method: 'POST',
             headers: headers,
             mode: 'cors',
