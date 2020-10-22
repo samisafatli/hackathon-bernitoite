@@ -46,7 +46,7 @@ export default function NativeSelects() {
   };
 
   return (
-    <div style={{ padding: 10 }}>
+    <div style={{ padding: "0 10px" }}>
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel id="demo-controlled-open-select-label">Categoria</InputLabel>
         <Select
