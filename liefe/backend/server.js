@@ -78,7 +78,9 @@ client.connect(err => {
 
       const hasCollection = await collectionExists(collectionName, db)
       if (!hasCollection) {
-        return res.status(404).send("Collection does not exist");
+        return res.status(404).send({
+          message: "Collection does not exist"
+        });
       }
 
       const collection = db.collection(collectionName);
@@ -90,17 +92,23 @@ client.connect(err => {
 
       if (item) {
         console.log("Item already exists");
-        return await res.send({message: "Item already exits"})
+        return await res.status(500).send({
+          message: "Item already exits"
+        })
       }
 
       const result = await collection.insertOne(body);
 
       if (result) {
         console.log("Item created");
-        return await res.send({message: "Item created"})
+        return await res.send({
+          message: "Item created"
+        })
       }
     } catch (err) {
-      return await res.send(err)
+      return await res.send({
+        message: err.message
+      })
     }
   })
   // client.close();
