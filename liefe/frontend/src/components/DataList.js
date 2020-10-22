@@ -1,63 +1,67 @@
 import React, { useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import InputLabel from "@material-ui/core/InputLabel"
+import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 
 const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
+  button: {
+    display: 'block',
+    marginTop: theme.spacing(2),
   },
-  margin:{
-    marginLeft: theme.spacing(2)
-  }
+  formControl: {
+    minWidth: 120,
+    width: "100%"
+  },
 }));
 
 const categories = [
-  { name: "" },
-  { name: "Autos e peças" },
-  { name: "Para a sua casa" },
-  { name: "Eletrônicos e celulares" },
-  { name: "Música e Hobbies" },
-  { name: "Esportes e lazer" },
-  { name: "Artigos infantis" },
-  { name: "animais de estimação" },
-  { name: "moda e beleza" },
-  { name: "comércio e escritório" }
+  { name: "Autos e peças", value: "1" },
+  { name: "Para a sua casa", value: "2"},
+  { name: "Eletrônicos e celulares", value: "3"},
+  { name: "Música e Hobbies", value: "4"},
+  { name: "Esportes e lazer", value: "5"},
+  { name: "Artigos infantis", value: "6"},
+  { name: "animais de estimação", value: "7"},
+  { name: "moda e beleza", value: "8"},
+  { name: "comércio e escritório", value: "9"}
 ]
 
 export default function NativeSelects() {
   const classes = useStyles();
-  const [state, setState] = useState({
-    category: "",
-  })
+  const [category, setCategory] = React.useState('');
+  const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
-    const name = event.target.name
-    setState({
-      ...state,
-      [name]: event.target.value
-    })
-  }
+    setCategory(event.target.value);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   return (
-    <div>
-      <FormControl className={classes.formControl}>
-        <InputLabel className={classes.margin } htmlFor="category-native-simple">Categoria do produto</InputLabel>
+    <div style={{ padding: 10 }}>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">Categoria</InputLabel>
         <Select
-          autoWidth
-          native
-          value={state.category}
+          labelId="demo-controlled-open-select-label"
+          label="Categoria"
+          id="demo-controlled-open-select"
+          open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
           onChange={handleChange}
-          inputProps={{
-            name: 'category',
-            id: 'category-native-simple',
-          }}
-          variant="outlined"
         >
-          {categories.map(category => (
-            <option value={category.name}>{category.name}</option>
-          ))
+          {
+            categories.map(category => (
+              <MenuItem value={category.value}>{category.name}</MenuItem>
+            ))
           }
         </Select>
       </FormControl>
