@@ -13,10 +13,14 @@ const LoginForm = () => {
 
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
+    const [emailError, setEmailError] = useState(null)
+    const [passwordError, setPasswordError] = useState(null)
 
     const handleLogin = () => {
         if (!user) {
-            login(email, password)
+            const errors = login(email, password)
+            setEmailError(errors.emailError)
+            setPasswordError(errors.passwordError)
         }
     }
 
@@ -32,10 +36,10 @@ const LoginForm = () => {
                 <img src={logo} style={{ width: 150 }} alt="Logo" />
                 <h3 style={{ margin: 10, color: "#5C307F" }}>
                     Acesse sua conta
-            </h3>
+                </h3>
             </header>
-            <TextInput text="Email" textFieldProps={{ onChange: e => setEmail(e.target.value) }} />
-            <TextInput text="Senha" textFieldProps={{ type: "password", onChange: e => setPassword(e.target.value) }} />
+            <TextInput error={emailError} errorMessage="Endereço de email inválido" text="Email" textFieldProps={{ onChange: e => setEmail(e.target.value) }} />
+            <TextInput error={passwordError} errorMessage="Senha inválida" text="Senha" textFieldProps={{ type: "password", onChange: e => setPassword(e.target.value) }} />
             <CustomButton text="Entre" onClick={handleLogin} />
             <CustomButton text="Cadastro" />
         </div>
