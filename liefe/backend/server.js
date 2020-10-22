@@ -48,6 +48,30 @@ client.connect(err => {
     }
   })
 
+  app.get('/:collectionName/:email', async (req, res) => {
+    try {
+      const collectionName = req.params.collectionName;
+      const hasCollection = await collectionExists(collectionName, db)
+      if (!hasCollection) {
+        return res.send("Collection does not exist");
+      }
+
+      const email = req.params.email;
+      const collection = db.collection(collectionName);
+      const items = await collection.find({
+        email: email
+      }).toArray();
+
+      if (items.length === 0) {
+        return res.status(404).send("Item does not exist");
+      }
+
+      return res.send(items[0]);
+    } catch (err) {
+      return res.send(err);
+    }
+  })
+
   app.post('/:collectionName', async (req, res) => {
     try {
       const collectionName = req.params.collectionName;
