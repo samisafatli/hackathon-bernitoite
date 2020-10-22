@@ -17,8 +17,6 @@ const useLogin = () => {
       const user = await getUserByEmail(email)
       const passwordError = user.password !== password
 
-      console.log(user, password);
-      
       !passwordError && setUser(user)
       return {
         emailError: false,

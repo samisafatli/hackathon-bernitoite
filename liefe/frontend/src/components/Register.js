@@ -19,7 +19,7 @@ const RegisterForm = () => {
     let history = useHistory();
 
 
-    const handleSubmit = async (event) => {    
+    const handleSubmit = async (event) => {
         if (!username) setUsernameError("Username precisa ser preenchido");
         else setUsernameError(false);
 
@@ -47,7 +47,7 @@ const RegisterForm = () => {
         } catch (err) {
             alert(err);
             setSubmit(false);
-        }    
+        }
         event.preventDefault();
     }
 

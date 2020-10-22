@@ -7,27 +7,30 @@ const request = async (url, params) => {
     if (response.status >= 400) {
         throw new Error(body.message);
     }
-    
+
     return body;
 }
 
 const getUserByEmail = async (email) => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    const url = `${ENDPOINT}/users/${email}`;
 
-    const response = await fetch(`${ENDPOINT}/users/${email}`, {
+    const body = await request(url, {
       method: 'GET',
       headers: headers
     });
 
-    return response.json();
+    return body;
 }
 
 const saveUser = async (userData) => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-        
-    const body = await request('http://localhost:5001/users', {
+
+    const url = `${ENDPOINT}/users`
+
+    const body = await request(url, {
         method: 'POST',
         headers: headers,
         mode: 'cors',
