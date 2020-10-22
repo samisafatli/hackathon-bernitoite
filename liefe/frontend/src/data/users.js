@@ -13,6 +13,11 @@ const users = [
         email: "entregador@fakemail.com",
         username: "entregador",
         password: "entregador",
+    },
+    {
+        email: "adm",
+        username: "adm",
+        password: "adm",
     }
 ]
 
