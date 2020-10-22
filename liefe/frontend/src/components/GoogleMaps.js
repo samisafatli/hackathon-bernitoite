@@ -96,7 +96,6 @@ export default function GoogleMaps (props) {
 
   return (
     <Autocomplete
-      id='google-map-liefe'
       style={{ width: "100%" }}
       getOptionLabel={option =>
         typeof option === 'string' ? option : option.description
@@ -107,7 +106,9 @@ export default function GoogleMaps (props) {
       includeInputInList
       filterSelectedOptions
       value={value}
+      noOptionsText={"carregando..."}
       onChange={(event, newValue) => {
+        props.setData(newValue)
         setOptions(newValue ? [newValue, ...options] : options)
         setValue(newValue)
       }}
@@ -116,7 +117,7 @@ export default function GoogleMaps (props) {
       }}
       renderInput={params => (
         <div style={{ margin: 10 }}>
-            <TextField {...params} {...props} variant='outlined' fullWidth />
+            <TextField {...params} label={props.label} variant='outlined' fullWidth />
         </div>
       )}
       renderOption={option => {
