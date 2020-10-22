@@ -1,7 +1,29 @@
+const express = require("express")
+const cors = require('cors')
+const app = express();
+
+app.use(express.json())
+app.use(cors())
+
+const APP_PORT = 5001;
+
+app.listen(APP_PORT, () => {
+  console.log(`Liefe API Listening on port ${APP_PORT}`);
+});
+
+app.get('/', (req, res) => {
+  res.send("Welcome to liefe-api");
+})
+
+app.post('/user', (req, res) => {
+  console.log('Bati', req.body);
+  res.send({});
+})
+
+
 const server = require("http").createServer();
 const io = require("socket.io")(server);
-
-const PORT = 5000;
+const CHAT_PORT = 5000;
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
 io.on("connection", (socket) => {
@@ -20,6 +42,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+server.listen(CHAT_PORT, () => {
+  console.log(`Liefe Chat Listening on port ${CHAT_PORT}`);
 });
