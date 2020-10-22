@@ -16,9 +16,10 @@ const LoginForm = () => {
     const [emailError, setEmailError] = useState(null)
     const [passwordError, setPasswordError] = useState(null)
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         if (!user) {
-            const errors = login(email, password)
+            const errors = await login(email, password)
+            console.log(errors);
             setEmailError(errors.emailError)
             setPasswordError(errors.passwordError)
         }

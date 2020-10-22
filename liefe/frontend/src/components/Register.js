@@ -5,6 +5,8 @@ import Header from './Header'
 import CustomButton from './Button'
 import TextInput from './TextInput'
 
+import { saveUser } from '../client/liefeClient'
+
 const RegisterForm = () => {
     const [username, setUsername] = useState(null)
     const [usernameError, setUsernameError] = useState(null)
@@ -17,7 +19,7 @@ const RegisterForm = () => {
     let history = useHistory();
 
 
-    const handleSubmit = (event) => {    
+    const handleSubmit = async (event) => {    
         if (!username) setUsernameError("Username precisa ser preenchido");
         else setUsernameError(false);
 
@@ -38,23 +40,14 @@ const RegisterForm = () => {
             "password": password
         }
 
-        console.log(userData);
-
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        
-        fetch('http://localhost:5001/users', {
-            method: 'POST',
-            headers: headers,
-            mode: 'cors',
-            body: JSON.stringify(userData)
-          }).then(function(response) {
-            console.log(response)
+        try {
+            await saveUser(userData);
             alert("Usurário cadastrado com sucesso");
             setSubmit(true);
-            return response.json();
-          });
-    
+        } catch (err) {
+            alert(err);
+            setSubmit(false);
+        }    
         event.preventDefault();
     }
 

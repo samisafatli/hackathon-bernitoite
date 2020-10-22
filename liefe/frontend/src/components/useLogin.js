@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import users from '../data/users'
+import { getUserByEmail } from '../client/liefeClient'
 
 const useLogin = () => {
   const [user, setUser] = useState(null)
@@ -12,17 +12,19 @@ const useLogin = () => {
     }
   }, [user])
 
-  const login = (email, password) => {
-    const user = users.find(user => user.email === email)
-
-    if (user) {
+  const login = async (email, password) => {
+    try {
+      const user = await getUserByEmail(email)
       const passwordError = user.password !== password
+
+      console.log(user, password);
+      
       !passwordError && setUser(user)
       return {
         emailError: false,
-        passwordError
+        passwordError: passwordError
       }
-    } else {
+    } catch(err) {
       return {
         emailError: true,
         passwordError: false
