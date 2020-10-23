@@ -13,7 +13,7 @@ const NewDelivery = () => {
     const [origin, setOrigin] = useState(null)
     const [category, setCategory] = useState(null)
     
-    const [submit, setSubmit] = useState(null)
+    const [chatcode, setChatCode] = useState(null)
     let history = useHistory()
 
     const handleSubmit = async () => {
@@ -22,15 +22,16 @@ const NewDelivery = () => {
             destiny,
             categoryIdx: category
         }
-        await saveDelivery(deliveryData)
-        setSubmit(true)
+        const data = await saveDelivery(deliveryData)
+        setChatCode(data.payload._id)
     }
 
     useEffect(() => {
-        if(submit){
+        if(chatcode){
+            console.log(chatcode)
             history.push('/sellerLoading')
         }
-    },[submit])
+    },[chatcode])
 
     return (
         <div>
