@@ -24,6 +24,19 @@ const getUserByEmail = async (email) => {
     return body;
 }
 
+const getDeliveryByEmail = async (email) => {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const url = `${ENDPOINT}/deliveries/${email}`;
+
+    const body = await request(url, {
+      method: 'GET',
+      headers: headers
+    });
+
+    return body;
+}
+
 const saveUser = async (userData) => {
     const body = await saveCollection('users', userData)
     return body;
@@ -52,6 +65,7 @@ const saveCollection = async (collectionName, data) => {
 
 export {
     getUserByEmail,
+    getDeliveryByEmail,
     saveUser,
     saveDelivery
 }
