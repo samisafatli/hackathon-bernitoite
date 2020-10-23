@@ -29,7 +29,10 @@ const NewDelivery = () => {
     useEffect(() => {
         if(chatcode){
             console.log(chatcode)
-            history.push('/sellerLoading')
+            history.push({
+                pathname: '/sellerLoading',
+                state: { chatcode: chatcode }
+            })
         }
     },[chatcode])
 

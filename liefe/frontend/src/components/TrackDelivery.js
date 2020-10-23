@@ -5,13 +5,13 @@ import Header from './Header'
 import TextInput from './TextInput'
 import CustomButton from './Button'
 const TrackDelivery = () => {
-    // const [code, setCode] = useState()
+    const [code, setCode] = useState()
     let history = useHistory();
 
     const handleClick = () => {
-        // if(code){
-        history.push(`/chat/09584b5cdd90c367af5`)
-        // }
+        if(code){
+            history.push(`/chat/${code}`)
+        }
     }
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const TrackDelivery = () => {
     return (
         <div>
             <Header />
-            <TextInput text="Código de entrega" />
+            <TextInput text="Código de entrega" textFieldProps={{ onChange: e => setCode(e.target.value) }} />
             <CustomButton text="Confirmar" onClick={handleClick} />
         </div>
     )
