@@ -1,14 +1,19 @@
 const ENDPOINT = "http://localhost:5001"
 
 const request = async (url, params) => {
-    const response = await fetch(url, params);
-    const body = await response.json();
-
-    if (response.status >= 400) {
-        throw new Error(body.message);
+    try{
+        const response = await fetch(url, params);
+        const body = await response.json();
+    
+        if (response.status >= 400) {
+            throw new Error(body.message);
+        }
+    
+        return body;
+    }catch(e){
+        console.error(e)
     }
 
-    return body;
 }
 
 const getUserByEmail = async (email) => {
@@ -18,7 +23,7 @@ const getUserByEmail = async (email) => {
 
 const getDeliveryByEmail = async (email) => {
     const body = await getCollectionByEmail('deliveries', email)
-    return body && body[0]
+    return body
 }
 
 const getCollectionByEmail = async (collectionName, email) => {
