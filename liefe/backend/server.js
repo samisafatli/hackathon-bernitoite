@@ -73,7 +73,7 @@ client.connect(err => {
         return res.status(404).send("Item does not exist");
       }
 
-      return res.send(items[0]);
+      return res.send(items);
     } catch (err) {
       return res.send(err);
     }
