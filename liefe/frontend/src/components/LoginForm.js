@@ -42,7 +42,7 @@ const LoginForm = () => {
             <TextInput error={emailError} errorMessage="Endereço de email inválido" text="Email" textFieldProps={{ onChange: e => setEmail(e.target.value) }} />
             <TextInput error={passwordError} errorMessage="Senha inválida" text="Senha" textFieldProps={{ type: "password", onChange: e => setPassword(e.target.value) }} />
             <CustomButton text="Entre" onClick={handleLogin} />
-            <CustomButton text="Cadastro" />
+            <CustomButton text="Cadastro" link="register" />
         </div>
     )
 }
