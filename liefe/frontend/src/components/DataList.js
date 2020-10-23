@@ -4,6 +4,7 @@ import InputLabel from "@material-ui/core/InputLabel"
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
+import categories from "../data/categories"
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -16,17 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const categories = [
-  { name: "Autos e peças", value: 1 },
-  { name: "Para a sua casa", value: 2},
-  { name: "Eletrônicos e celulares", value: 3},
-  { name: "Música e Hobbies", value: 4},
-  { name: "Esportes e lazer", value: 5},
-  { name: "Artigos infantis", value: 6},
-  { name: "animais de estimação", value: 7},
-  { name: "moda e beleza", value: 8},
-  { name: "comércio e escritório", value: 9}
-]
+
 
 export default function NativeSelects(props) {
   const classes = useStyles();
