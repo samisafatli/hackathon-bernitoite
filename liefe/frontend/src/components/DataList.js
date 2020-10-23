@@ -28,12 +28,13 @@ const categories = [
   { name: "comércio e escritório", value: 9}
 ]
 
-export default function NativeSelects() {
+export default function NativeSelects(props) {
   const classes = useStyles();
   const [category, setCategory] = useState('');
   const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
+    props.setData(event.target.value)
     setCategory(event.target.value);
   };
 
