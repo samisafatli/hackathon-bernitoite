@@ -30,6 +30,11 @@ const Header = ({title = "carregando...", shouldLogin = true}) => {
         goToHome();
     }
 
+    const goToProfile = () => {
+        history.push({
+            pathname: '/profile'
+        })
+    }
     const goToHome = () => {
         history.push({
             pathname: '/'
@@ -44,7 +49,7 @@ const Header = ({title = "carregando...", shouldLogin = true}) => {
             </div>
             <div style={{ flexDirection: "column", display: "flex", alignItems: "flex-end" }}>
                 {/* <span style={{color: "#5C307F", fontWeight: 700}}>{label}</span> */}
-                <Avatar>{label[0].toUpperCase()}</Avatar>
+                <div onClick={goToProfile}><Avatar>{label[0].toUpperCase()}</Avatar></div>
                 {/* {user && <span style={{color: "#5C307F", fontWeight: 700}} onClick={logout}> sair</span>} */}
             </div>
         </div>
