@@ -45,6 +45,7 @@ const Chat = (props) => {
             </div>
             <TextInput
                 value={newMessage}
+                defaultValue={"Envie alguma mensagem"}
                 placeholder="Comece a conversar..."
                 textFieldProps={{
                     multiline: true,

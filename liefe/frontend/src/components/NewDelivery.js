@@ -34,7 +34,7 @@ const NewDelivery = () => {
                 state: { chatcode: chatcode }
             })
         }
-    },[chatcode])
+    },[chatcode, history])
 
     return (
         <div>

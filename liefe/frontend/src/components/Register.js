@@ -55,7 +55,7 @@ const RegisterForm = () => {
         if(submit){
             history.push('/')
         }
-    },[submit])
+    },[submit, history])
 
     return (
         <div>

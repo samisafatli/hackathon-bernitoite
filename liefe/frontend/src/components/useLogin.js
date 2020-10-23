@@ -7,6 +7,7 @@ const useLogin = () => {
   useEffect(() => {
     if (user) {
       window.localStorage.setItem('user', user.email)
+      window.localStorage.setItem('username', user.username)
       setUser(user)
     }
   }, [user])

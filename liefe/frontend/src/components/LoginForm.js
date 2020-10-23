@@ -29,7 +29,7 @@ const LoginForm = () => {
         if(user){
             history.push('/home')
         }
-    },[user])
+    },[user, history])
 
     return (
         <div style={{ marginBottom: 40 }}>

@@ -15,9 +15,8 @@ const Header = ({title = "carregando...", shouldLogin = true}) => {
         if (!shouldLogin) return;
 
         try {
-            const email = window.localStorage.getItem("user")
-            const userData = await getUserByEmail(email)
-            setLabel(userData.username)
+            const username = window.localStorage.getItem("username")
+            setLabel(username)
             setUser(true)
         } catch (error) {
             goToHome();
