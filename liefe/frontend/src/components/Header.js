@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import Logo from '../images/LogoOrange.png'
+import Avatar from '@material-ui/core/Avatar';
+
 import { getUserByEmail } from '../client/liefeClient'
 
 
@@ -41,8 +43,9 @@ const Header = ({title = "carregando...", shouldLogin = true}) => {
                 <img src={Logo} style={{ width: 100 }} alt="Logo" />
             </div>
             <div style={{ flexDirection: "column", display: "flex", alignItems: "flex-end" }}>
-                <span style={{color: "#5C307F", fontWeight: 700}}>{label}</span>
-                {user && <span style={{color: "#5C307F", fontWeight: 700}} onClick={logout}> sair</span>}
+                {/* <span style={{color: "#5C307F", fontWeight: 700}}>{label}</span> */}
+                <Avatar>{label[0].toUpperCase()}</Avatar>
+                {/* {user && <span style={{color: "#5C307F", fontWeight: 700}} onClick={logout}> sair</span>} */}
             </div>
         </div>
     </header>
