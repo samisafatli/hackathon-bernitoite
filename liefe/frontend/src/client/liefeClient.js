@@ -12,28 +12,24 @@ const request = async (url, params) => {
 }
 
 const getUserByEmail = async (email) => {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    const url = `${ENDPOINT}/users/${email}`;
-
-    const body = await request(url, {
-      method: 'GET',
-      headers: headers
-    });
-
-    return body;
+    const body = await getCollectionByEmail('users', email)
+    return body && body[0]
 }
 
 const getDeliveryByEmail = async (email) => {
+    const body = await getCollectionByEmail('deliveries', email)
+    return body && body[0]
+}
+
+const getCollectionByEmail = async (collectionName, email) => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    const url = `${ENDPOINT}/deliveries/${email}`;
+    const url = `${ENDPOINT}/${collectionName}/${email}`;
 
     const body = await request(url, {
       method: 'GET',
       headers: headers
     });
-
     return body;
 }
 
