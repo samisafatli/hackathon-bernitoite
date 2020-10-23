@@ -9,7 +9,7 @@ const NewDelivery = () => {
     const [destiny, setDestiny] = useState(null)
     const [origin, setOrigin] = useState(null)
     
-    // console.log(origin, destiny)
+    console.log(origin, destiny)
 
     return (
         <div>

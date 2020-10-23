@@ -29,6 +29,29 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+const API_KEY = 'AIzaSyB_BL1ifZSDSw_VG9k375VTBkdB7hsHqjM'
+
+//DESCULPA POR ESSA CAGADA
+const getDetails = async (place, setData) => {
+  const geocoder = new window.google.maps.Geocoder()
+  const params = {
+    placeId: place.place_id,
+    // fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
+  };
+
+  geocoder.geocode(params, (results, status) => {
+    if (status === "OK") {
+      // window.lala = results;
+      const item = results[0];
+      place.location = {
+        lat: item.geometry.location.lat(),
+        lng: item.geometry.location.lng()
+      }
+      setData(place);
+    }
+  });
+}
+
 export default function GoogleMaps (props) {
   const classes = useStyles()
   const [value, setValue] = React.useState(null)
@@ -36,12 +59,10 @@ export default function GoogleMaps (props) {
   const [options, setOptions] = React.useState([])
   const loaded = React.useRef(false)
 
-  const API_KEY = 'AIzaSyB_BL1ifZSDSw_VG9k375VTBkdB7hsHqjM'
-
   if (typeof window !== 'undefined' && !loaded.current) {
     if (!document.querySelector('#google-maps')) {
       loadScript(
-        `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`,
+        `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geocoder,places`,
         document.querySelector('head'),
         'google-maps'
       )
@@ -107,8 +128,8 @@ export default function GoogleMaps (props) {
       filterSelectedOptions
       value={value}
       noOptionsText={"carregando..."}
-      onChange={(event, newValue) => {
-        props.setData(newValue)
+      onChange={async (event, newValue) => {
+        getDetails(newValue, props.setData)
         setOptions(newValue ? [newValue, ...options] : options)
         setValue(newValue)
       }}
