@@ -59,7 +59,7 @@ const RegisterForm = () => {
 
     return (
         <div>
-            <Header title="Crie sua conta:"/>
+            <Header title="Crie sua conta:" shouldLogin={false}/>
             <TextInput error={usernameError} errorMessage={usernameError} text="Username" textFieldProps={{ onChange: e => setUsername(e.target.value) }} />
             <TextInput error={emailError} errorMessage={emailError} text="Email" textFieldProps={{ onChange: e => setEmail(e.target.value) }} />
             <TextInput error={passwordError} errorMessage={passwordError} text="Senha" textFieldProps={{ type: "password", onChange: e => setPassword(e.target.value) }} />

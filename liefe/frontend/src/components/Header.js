@@ -4,7 +4,7 @@ import Logo from '../images/LogoOrange.png'
 import { getUserByEmail } from '../client/liefeClient'
 
 
-const Header = ({title = "carregando..."}) => {
+const Header = ({title = "carregando...", shouldLogin = true}) => {
 
     const [user, setUser] = useState(null)
     const [label, setLabel] = useState(title)
@@ -12,22 +12,24 @@ const Header = ({title = "carregando..."}) => {
     let history = useHistory()
 
     const onLoad = async () => {
+        if (!shouldLogin) return;
+
         try {
             const email = window.localStorage.getItem("user")
             const userData = await getUserByEmail(email)
             setLabel(userData.username)
             setUser(true)
         } catch (error) {
-            history.push({
-                pathname: '/'
-            })
+            goToHome();
         }
     }
 
     const logout = () => {
         window.localStorage.removeItem("user")
-        window.localStorage.removeItem("username")
+        goToHome();
+    }
 
+    const goToHome = () => {
         history.push({
             pathname: '/'
         })
@@ -36,7 +38,7 @@ const Header = ({title = "carregando..."}) => {
     return (
     <header onLoad={onLoad} style={{ height: 80, width: "100%", backgroundColor: "#FF6e00", position: "fixed", top: 0, left: 0 }}>
         <div style={{ width: "auto", height: "100%", display:"flex", alignItems: "center", marginRight: "10px" }}>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1 }} onClick={goToHome}>
                 <img src={Logo} style={{ width: 100 }} alt="Logo" />
             </div>
             <div style={{ flexDirection: "column", display: "flex", alignItems: "flex-end" }}>
