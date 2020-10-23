@@ -17,10 +17,12 @@ const NewDelivery = () => {
     let history = useHistory()
 
     const handleSubmit = async () => {
+        const email = window.localStorage.getItem("user")
         const deliveryData = {
             origin,
             destiny,
-            categoryIdx: category
+            email,
+            categoryIdx: category,
         }
         const data = await saveDelivery(deliveryData)
         setChatCode(data.payload._id)
