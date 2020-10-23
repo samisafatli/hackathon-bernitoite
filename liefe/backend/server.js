@@ -20,6 +20,13 @@ const collectionExists = async (collectionName, db) => {
   return collectionExists.length > 0;
 }
 
+const validate = {
+  'users': (data) => ({
+    email: data.email
+  }),
+  'deliveries': null
+}
+
 client.connect(err => {
   const db = client.db("liefe");
   const APP_PORT = 5001;
@@ -86,9 +93,9 @@ client.connect(err => {
       const collection = db.collection(collectionName);
       const body = req.body;
 
-      const item = await collection.findOne({
-        email: body.email
-      })
+      const validator = validate[collectionName]
+
+      const item = validator && await collection.findOne(validator(body))
 
       if (item) {
         console.log("Item already exists");
