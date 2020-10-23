@@ -100,7 +100,8 @@ client.connect(err => {
       if (item) {
         console.log("Item already exists");
         return await res.status(500).send({
-          message: "Item already exits"
+          message: "Item already exits",
+          payload: item
         })
       }
 
@@ -109,12 +110,14 @@ client.connect(err => {
       if (result) {
         console.log("Item created");
         return await res.send({
-          message: "Item created"
+          message: "Item created",
+          payload: result.ops[0]
         })
       }
     } catch (err) {
       return await res.send({
-        message: err.message
+        message: err.message,
+        payload: null
       })
     }
   })
