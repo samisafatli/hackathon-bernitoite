@@ -25,16 +25,26 @@ const getUserByEmail = async (email) => {
 }
 
 const saveUser = async (userData) => {
+    const body = await saveCollection('users', userData)
+    return body;
+}
+
+const saveDelivery = async (deliveryData) => {
+    const body = await saveCollection('deliveries', deliveryData)
+    return body;
+}
+
+const saveCollection = async (collectionName, data) => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const url = `${ENDPOINT}/users`
+    const url = `${ENDPOINT}/${collectionName}`
 
     const body = await request(url, {
         method: 'POST',
         headers: headers,
         mode: 'cors',
-        body: JSON.stringify(userData)
+        body: JSON.stringify(data)
     })
 
     return body;
@@ -42,5 +52,6 @@ const saveUser = async (userData) => {
 
 export {
     getUserByEmail,
-    saveUser
+    saveUser,
+    saveDelivery
 }
