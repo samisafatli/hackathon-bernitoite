@@ -3,7 +3,7 @@ const cors = require('cors')
 const app = express()
 
 const MongoClient = require('mongodb').MongoClient;
-const {ObjectId} = require('mongodb')
+const { ObjectId } = require('mongodb')
 const uri = "mongodb+srv://liefe-admin:olx-hackaton@cluster0.dzrbk.mongodb.net/liefe?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   useUnifiedTopology: true,
@@ -89,6 +89,26 @@ client.connect(err => {
       }
       const collection = db.collection(collectionName);
       const item = await (await collection.findOneAndDelete({ _id: new ObjectId(id) }));
+
+      return res.send(item)
+    } catch (err) {
+      return res.send(err)
+    }
+
+  })
+
+  app.put('/:collectionName/:id', async (req, res) => {
+    try {
+      console.log("aaqqqq")
+      const { collectionName, id } = req.params;
+      const hasCollection = await collectionExists(collectionName, db)
+      if (!hasCollection) {
+        return res.send("Collection does not exist");
+      }
+      const body = req.body;
+
+      const collection = db.collection(collectionName);
+      const item = await (await collection.findOneAndUpdate({ _id: new ObjectId(id) }, { $set: { ...body } }));
 
       return res.send(item)
     } catch (err) {
