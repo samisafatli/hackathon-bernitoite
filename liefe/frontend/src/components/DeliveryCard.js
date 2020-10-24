@@ -62,8 +62,8 @@ const DeliveryCard = ({delivery, handleDelete, profile}) =>  {
               </Grid>
               <Grid item>
                   <div style={{display: "flex", justifyContent: "space-between"}}>
-                  <Button onClick={() => handleDelete(delivery._id)} text="Remove"/ >
-                  <Button link={`chat/${delivery._id}`} text="Chat">
+                  {profile && <Button onClick={() => handleDelete(delivery._id)} text="Remove"/ >}
+                  <Button fullWidth={!profile?true:false} link={`chat/${delivery._id}`} text="Chat">
                   </Button>
                   </div>
               </Grid>

@@ -5,7 +5,7 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import NewDelivery from './components/NewDelivery';
 import TrackDelivery from './components/TrackDelivery';
-import DeliveryList from './components/DeliveryList'
+import DeliveryPage from './components/DeliveryPage'
 import Loading from './components/Loading'
 import Chat from './components/Chat'
 import {
@@ -40,7 +40,7 @@ function App() {
             <TrackDelivery/>
           </Route>
           <Route path="/deliveryList" exact>
-            <DeliveryList/>
+            <DeliveryPage/>
           </Route>
           <Route path="/sellerLoading" exact>
             <Loading seller/>

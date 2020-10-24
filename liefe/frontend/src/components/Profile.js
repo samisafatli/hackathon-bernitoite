@@ -7,13 +7,15 @@ const Profile = () => {
     const username = window.localStorage.getItem("username")
 
     return (
-        <div style={{ marginTop: 500 }}>
+        <div>
             <Header />
-            <div style={{margin: 40}}>
+            <div style={{ position: "fixed", width: "100%", top: 80, left: 0, zIndex: 1, backgroundColor: "rgb(255, 110, 0)", padding: 10}}>
                 <h3>Usuário: {username}</h3>
                 <div>Email: {email}</div>
             </div>
-            <DeliveryList profile />
+            <div style={{marginTop: 400}}>
+                <DeliveryList profile />
+            </div>
 
         </div>
     )

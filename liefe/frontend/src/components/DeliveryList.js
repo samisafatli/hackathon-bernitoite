@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header'
 import DeliveryCard from './DeliveryCard'
-import { getDeliveryByEmail, deleteDeliveryById } from '../client/liefeClient'
+import { getDeliveryByEmail, deleteDeliveryById, getDeliveryAll } from '../client/liefeClient'
 
-const DeliveryList = ({profile, destiny, origin}) => {
+const DeliveryList = ({profile, destiny, origin, all}) => {
 
     const email = window.localStorage.getItem("user")
     const [deliveries, setDeliveries] = useState([])
@@ -18,9 +18,15 @@ const DeliveryList = ({profile, destiny, origin}) => {
 
     useEffect(() => {
         const fetchDeliveries = async () => {
-            const deliveries = await getDeliveryByEmail(email) || []
+            let deliveries = []
+            if(!all){
+                deliveries = await getDeliveryByEmail(email) || []
+            } else {
+                deliveries = await getDeliveryAll() || []
+            }
+            
             if(destiny && origin){
-                const filteredDeliveries = deliveries.filter(d => d.origin.place_id === origin && d.destiny.place_id === destiny)
+                const filteredDeliveries = deliveries.filter(d => d.origin.place_id === origin .place_id && d.destiny.place_id === destiny.place_id)
                 setDeliveries(filteredDeliveries)
             }
             else{
@@ -38,7 +44,7 @@ const DeliveryList = ({profile, destiny, origin}) => {
     return (
         <div>
             {deliveries.map(d => (
-                <DeliveryCard profile handleDelete={handleDelete} delivery={d} key={d._id} />
+                <DeliveryCard profile={profile} handleDelete={handleDelete} delivery={d} key={d._id} />
             ))}
         </div>
     )

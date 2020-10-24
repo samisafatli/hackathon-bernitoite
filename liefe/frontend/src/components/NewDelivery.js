@@ -18,6 +18,7 @@ const NewDelivery = () => {
 
     const handleSubmit = async () => {
         const email = window.localStorage.getItem("user")
+        alert("Entrega criada com sucesso!")
         const deliveryData = {
             origin,
             destiny,
@@ -32,7 +33,7 @@ const NewDelivery = () => {
         if(chatcode){
             console.log(chatcode)
             history.push({
-                pathname: '/sellerLoading',
+                pathname: '/profile',
                 state: { chatcode: chatcode }
             })
         }
