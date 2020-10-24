@@ -3,7 +3,7 @@ import Header from './Header'
 import DeliveryCard from './DeliveryCard'
 import { getDeliveryByEmail, deleteDeliveryById } from '../client/liefeClient'
 
-const DeliveryList = () => {
+const DeliveryList = ({profile}) => {
 
     const email = window.localStorage.getItem("user")
     const [deliveries, setDeliveries] = useState([])
@@ -30,10 +30,9 @@ const DeliveryList = () => {
 
     }, [deliveries])
     return (
-        <div style={{marginTop: 400}}>
-            <Header />
+        <div>
             {deliveries.map(d => (
-                <DeliveryCard handleDelete={handleDelete} delivery={d} key={d._id} />
+                <DeliveryCard profile handleDelete={handleDelete} delivery={d} key={d._id} />
             ))}
         </div>
     )

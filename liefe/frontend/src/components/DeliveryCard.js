@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DeliveryCard = ({delivery, handleDelete}) =>  {
+const DeliveryCard = ({delivery, handleDelete, profile}) =>  {
   const classes = useStyles();
   const category = categories.find(c => c.value === delivery.categoryIdx)
 
@@ -45,6 +45,11 @@ const DeliveryCard = ({delivery, handleDelete}) =>  {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
+                {profile && 
+                <Typography gutterBottom variant="subtitle1">
+                  Código: {delivery._id}
+                </Typography>
+                }
                 <Typography gutterBottom variant="subtitle1">
                   Categoria: {category.name}
                 </Typography>
