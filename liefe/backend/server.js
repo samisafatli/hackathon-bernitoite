@@ -4,7 +4,7 @@ const app = express()
 
 const MongoClient = require('mongodb').MongoClient;
 const { ObjectId } = require('mongodb')
-const uri = "mongodb+srv://liefe-admin:olx-hackaton@cluster0.dzrbk.mongodb.net/liefe?retryWrites=true&w=majority";
+const uri = "mongodb://liefe-admin:Liefe123@ds111489.mlab.com:11489/liefe?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   useUnifiedTopology: true,
   useNewUrlParser: true
@@ -29,6 +29,9 @@ const validate = {
 }
 
 client.connect(err => {
+  if(err){
+    console.log(err)
+  }
   const db = client.db("liefe");
   const APP_PORT = 5001;
 
