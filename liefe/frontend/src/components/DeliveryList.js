@@ -3,7 +3,7 @@ import Header from './Header'
 import DeliveryCard from './DeliveryCard'
 import { getDeliveryByEmail, deleteDeliveryById } from '../client/liefeClient'
 
-const DeliveryList = ({profile}) => {
+const DeliveryList = ({profile, destiny, origin}) => {
 
     const email = window.localStorage.getItem("user")
     const [deliveries, setDeliveries] = useState([])
@@ -19,7 +19,13 @@ const DeliveryList = ({profile}) => {
     useEffect(() => {
         const fetchDeliveries = async () => {
             const deliveries = await getDeliveryByEmail(email) || []
-            setDeliveries(deliveries)
+            if(destiny && origin){
+                const filteredDeliveries = deliveries.filter(d => d.origin.place_id === origin && d.destiny.place_id === destiny)
+                setDeliveries(filteredDeliveries)
+            }
+            else{
+                setDeliveries(deliveries)
+            }
             if(!deliveries.length){
                 setHasDeliveries(false)
             }
