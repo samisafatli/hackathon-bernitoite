@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar'
 import categories from '../data/categories'
+import Button from './Button'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,9 +29,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DeliveryCard = ({delivery}) =>  {
+const DeliveryCard = ({delivery, handleDelete}) =>  {
   const classes = useStyles();
   const category = categories.find(c => c.value === delivery.categoryIdx)
+
+
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -52,9 +56,11 @@ const DeliveryCard = ({delivery}) =>  {
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                  Remove
-                </Typography>
+                  <div style={{display: "flex", justifyContent: "space-between"}}>
+                  <Button onClick={() => handleDelete(delivery._id)} text="Remove"/ >
+                  <Button link={`chat/${delivery._id}`} text="Chat">
+                  </Button>
+                  </div>
               </Grid>
             </Grid>
           </Grid>

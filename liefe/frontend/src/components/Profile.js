@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Header from './Header'
 import {getDeliveryByEmail} from '../client/liefeClient'
+import DeliveryList from './DeliveryList'
 
 const Profile = () => {
     const email = window.localStorage.getItem("user")
@@ -19,11 +20,7 @@ const Profile = () => {
     return (
         <div>
             <Header />
-            <ul>
-                {
-                    deliveries.map(d => <div>{d._id}</div>)
-                }
-            </ul>
+            <DeliveryList />
         </div>
     )
 }

@@ -42,7 +42,7 @@ const Header = ({title = "carregando...", shouldLogin = true}) => {
     }
 
     return (
-    <header onLoad={onLoad} style={{ height: 80, width: "100%", backgroundColor: "#FF6e00", position: "fixed", top: 0, left: 0 }}>
+    <header onLoad={onLoad} style={{ height: 80, width: "100%", backgroundColor: "#FF6e00", position: "fixed", top: 0, left: 0, zIndex: 1 }}>
         <div style={{ width: "auto", height: "100%", display:"flex", alignItems: "center", marginRight: "10px" }}>
             <div style={{ flex: 1 }} onClick={goToHome}>
                 <img src={Logo} style={{ width: 100 }} alt="Logo" />
