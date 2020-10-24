@@ -39,23 +39,23 @@ const getCollectionByEmail = async (collectionName, email) => {
 }
 
 const saveUser = async (userData) => {
-    const body = await saveCollection('users', userData)
+    const body = await saveCollection('users', userData, 'POST')
     return body;
 }
 
 const saveDelivery = async (deliveryData) => {
-    const body = await saveCollection('deliveries', deliveryData)
+    const body = await saveCollection('deliveries', deliveryData, 'POST')
     return body;
 }
 
-const saveCollection = async (collectionName, data) => {
+const saveCollection = async (collectionName, data, type) => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     const url = `${ENDPOINT}/${collectionName}`
 
     const body = await request(url, {
-        method: 'POST',
+        method: type,
         headers: headers,
         mode: 'cors',
         body: JSON.stringify(data)
