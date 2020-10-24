@@ -38,6 +38,13 @@ const getCollectionByEmail = async (collectionName, email) => {
     return body;
 }
 
+const deleteDeliveryById = async (id) => {
+    const url = `${ENDPOINT}/deliveries/${id}`;
+
+    const body = await request(url, {method: 'DELETE'});
+    return body;
+}
+
 const saveUser = async (userData) => {
     const body = await saveCollection('users', userData, 'POST')
     return body;
@@ -68,5 +75,6 @@ export {
     getUserByEmail,
     getDeliveryByEmail,
     saveUser,
-    saveDelivery
+    saveDelivery,
+    deleteDeliveryById
 }
