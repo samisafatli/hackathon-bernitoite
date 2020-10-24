@@ -4,6 +4,12 @@ Projeto desenvolvido durante a hackaton da OLX cujo tema foi: **Economia colabor
 
 O foco do **LIEFE** é intermediar a negociação entre comprador, vendedor e entregador através de uma plataforma que permite a comunicação entre eles.
 
+## DISCLAIMER!
+
+Este projeto é uma prova de conceito, com o objetivo apenas de demonstrar de maneira prática algo próximo de como seria o funcionamento do projeto Liefe. Logo possui muitas falhas de segurança e algumas gambis :D hehehe. O verdadeiro objetivo era apenas montar algo para provar que a idéia era de
+fato tangivel e possuia um valor, uma prova de conceito.
+
+
 #### Descrição técnica:
 
 A estrutura do projeto é dividida em frontend e backend. O Frontend é responsável por renderizar o site enquanto o backend é responsável por fazer a comunicação entre os usuários no chat.
